@@ -6,31 +6,34 @@ export function getDevice(imei: string): Promise<IDevice> {
   return request(
     HOST,
     `{
-  device: deviceByImei(imei: "${imei}") {
+  device: deviceByImei(imei: "352312090142897") {
     id
     companyId
     groupId
     imei
     skipAcc
     type
-    status: statusByDeviceId {
-      state
-      distance
-      createdAt
-      electricity
-      gpsOn
-      chargeOn
-      accHigh
-      powerLevel
-      gsmLevel
-      time
-      lat
-      lng
-      speed
-      rotation
+    status: status2SByDeviceId(first: 1, orderBy: CREATED_AT_DESC) {
+      nodes {
+        deviceId
+        state
+        distance
+        createdAt
+        electricity
+        gpsOn
+        chargeOn
+        accHigh
+        powerLevel
+        gsmLevel
+        time
+        lat
+        lng
+        speed
+        rotation
+      }
     }
   }
 }
 `
-  ).then(res => res.device as IDevice);
+  ).then(res => ({ ...res.device, status: res.device.status.nodes[0] }));
 }

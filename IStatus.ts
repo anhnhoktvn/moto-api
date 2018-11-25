@@ -1,4 +1,5 @@
 export interface IStatus {
+  deviceId?: number;
   // state
   state?: number;
   distance?: number;
