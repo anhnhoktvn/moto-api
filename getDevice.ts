@@ -6,7 +6,7 @@ export function getDevice(imei: string): Promise<IDevice> {
   return request(
     HOST,
     `{
-  device: deviceByImei(imei: "352312090142897") {
+  device: deviceByImei(imei: "${imei}") {
     id
     companyId
     groupId
