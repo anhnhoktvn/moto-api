@@ -18,6 +18,7 @@ export function addStatus(status: IStatus): Promise<IStatus> {
     lat,
     lng,
     speed,
+    duration,
     rotation
   } = status;
   return request(
@@ -39,6 +40,7 @@ export function addStatus(status: IStatus): Promise<IStatus> {
       lat
       lng
       speed
+      duration
       rotation
     }
   }
@@ -61,6 +63,7 @@ export function addStatus(status: IStatus): Promise<IStatus> {
           lat,
           lng,
           speed,
+          duration,
           rotation
         }
       }
